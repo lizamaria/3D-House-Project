@@ -35,6 +35,7 @@
   
 ## What 
  extract the coordinates from the tif or (shp file could be?)
+ https://gis.stackexchange.com/questions/299787/finding-pixel-location-in-raster-using-coordinates/299791#299791
  
 
 
@@ -43,25 +44,43 @@
  
  ### Must-have features :
     - 3D lookup of houses.
-    - Some ideas: when the coordinates be received show:
+    - Some ideas: when the coordinates be received show:   3D plot from DSM data set
         - the slope of the ground, which is so humid¡?
 
  ### Nice-to-have features
     - Optimize your solution to have the result as fast as possible.
     - Features like the living area of the house in m², how many estimated floors, if there is a pool, the vegetation in the neighborhood, etc... 
     - Better visualization.
+    - Deadline: `20/11/20 9:00 AM`
+
+## Who.
 
 ## Why
 
 ## When
     - Duration: `2 weeks`
-    - Deadline: `20/11/20 9:00 AM`
-
-## Who.
     Liza-María Candamil
     
-### Pending things to do:
+
 - to get lat long coordinates https://rasterio.readthedocs.io/en/latest/topics/reproject.html#reprojection
-Reprojection
-Rasterio can map the pixels of a destination raster with an associated coordinate reference system and transform to the pixels of a source image with a different coordinate reference system and transform. This process is known as reprojection.
-- 
+    Check with this https://gis.stackexchange.com/questions/299787/finding-pixel-location-in-raster-using-coordinates/299791#299791
+    
+- convert from wgs84 to lambert coordinates rasterio    
+https://gis.stackexchange.com/questions/78838/converting-projected- 
+- do the 3D plot:
+    * Using matplotlib: https://stackoverflow.com/questions/41960448/matplotlib-3d-surface-plot-from-2d-pandas-dataframe 
+        
+    * Using plotly: https://plotly.com/python/3d-surface-plots/ 
+    
+        for using this library I had to install the jupyter lab plotly extension (in Anaconda terminal): https://stackoverflow.com/a/55955851/14449195
+        And when I was installing this was required to install node.js and npm (in Anaconda Navigator)     
+    - so I had to activate the enviaroment in Anaconda prompt with >> `conda activate House-Project-3D`
+    - Then >> `pip install streamlit`
+    - Finally I can get my 3D plot with streamlit
+    
+  plotly 3d jupyter notebook not showing so 
+
+### Pending things to do:    
+- Make a web app to recieve and show the coordinates in the map with streamlit:https://www.youtube.com/watch?v=B2iAodr0fOo
+
+
