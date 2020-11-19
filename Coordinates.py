@@ -16,13 +16,13 @@ import streamlit as st
 # map_data = pd.DataFrame(clip[0])
 # st.map(map_data)
 
-st.sidebar.write('Insert your coordinates ')
+st.sidebar.write('Enter the coordinates ')
 #Longitude
 lon_degrees = st.sidebar.text_input('Longitude:', 3.0)
 
 #Latitude
 
-lat_degrees = st.sidebar.text_input('Latitud:', 51.0)
+lat_degrees = st.sidebar.text_input('Latitude:', 51.0)
 
 st.sidebar.text('EPSG:4326 WGS 84 System, dec format')
 
@@ -38,7 +38,7 @@ lon1,lat1 = transform(inProj,outProj,lon0,lat0)
 #coordinates = (lon, lat) # lon, lat of ~centre of Brugge: 3.227062, 51.214465 
    
 # Your NxN window
-N = 100
+N = 150
 
 # Open the raster
 with rio.open(infile) as dataset:
@@ -59,11 +59,15 @@ with rio.open(infile) as dataset:
 # Read data from an array from numpy
 df =  pd.DataFrame(clip[0])
 
-fig = go.Figure(data=[go.Surface(z=df.values)])
+fig = go.Figure(data=[go.Surface(z=df.values, colorscale='tropic')])
 
-fig.update_layout(title='Brugge', autosize=False,
-                  width=700, height=700,
-                  margin=dict(l=50, r=50, b=65, t=90))
+fig.update_layout(title='Brugge', autosize=False, #xaxis_autorange="reversed",
+                  scene = dict(
+                     xaxis = dict(nticks=4, range=[-10,110],),
+                     yaxis = dict(nticks=4, range=[-10,110],),
+                     zaxis = dict(nticks=4, range=[0,55],),),
+                  width=800, height=600,
+                  margin=dict(l=10, r=10, b=65, t=90))
 #fig.show()
 
 st.write(fig)
